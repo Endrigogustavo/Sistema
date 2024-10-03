@@ -1,14 +1,19 @@
 {
-    "version": 2,
-    "functions": {
-      "api/index.py": {
-        "runtime": "python@3.12"
-      }
+  "functions": {
+    "app.py": {
+      "runtime": "python3.10.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/extract_table",
+      "methods": ["POST"],
+      "dest": "/app.py"
     },
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "api/app.py"
-      }
-    ]
-  }
+    {
+      "src": "/(.*)",
+      "dest": "/app.py"
+    }
+  ],
+  "version": 2
+}
