@@ -1,75 +1,57 @@
 import os
 from flask import Flask, request, jsonify
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel
 from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore
+import spacy
+
+# Carregar o modelo spaCy
+nlp = spacy.load("en_core_web_md")  # ou uma versão mais leve como 'en_core_web_sm'
 
 app = Flask(__name__)
 CORS(app)
 
 # Configurar o Firebase
 cred_path = os.path.join(os.path.dirname(__file__), '../Database/FirebaseDaeLink.json')
+cred = credentials.Certificate(cred_path) if os.path.exists(cred_path) else None
 
-if not os.path.exists(cred_path):
-    print("Arquivo de credenciais não encontrado. Verifique o caminho.")
+if cred:
+    firebase_admin.initialize_app(cred)
 else:
-    print("Arquivo de credenciais encontrado.")
-
-cred = credentials.Certificate(cred_path)
-firebase_admin.initialize_app(cred)
+    print("Arquivo de credenciais não encontrado. Verifique o caminho.")
 
 db = firestore.client()
-
 collection_name = 'PCD'
 
 def get_jobs_from_firestore():
     jobs_ref = db.collection(collection_name)
-    docs = jobs_ref.stream()
-    jobs = []
-    for doc in docs:
-        job = doc.to_dict()
-        job['id'] = doc.id  
-        jobs.append(job)
-    return jobs
+    return [{**doc.to_dict(), 'id': doc.id} for doc in jobs_ref.stream()]
 
 jobs = get_jobs_from_firestore()
-descriptions = [job['descrição'] for job in jobs]
-tfidf = TfidfVectorizer().fit_transform(descriptions)
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    data = request.json
-    job_title = data.get('descrição')
-
+    job_title = request.json.get('descrição')
     job_index = find_job_index_by_similar_description(job_title)
 
     if job_index is None:
         return jsonify({"error": "Esta vaga não existe"}), 404
 
-    cosine_similarities = linear_kernel(tfidf[job_index:job_index + 1], tfidf).flatten()
-    related_docs_indices = cosine_similarities.argsort()[:-20:-1]
-
-    recommendations = [jobs[i] for i in related_docs_indices if i != job_index]
-    recommendations.insert(0, jobs[job_index])
-
+    recommendations = [jobs[job_index]] + [jobs[i] for i in range(len(jobs)) if i != job_index][:19]
     return jsonify(recommendations)
 
 def find_job_index_by_similar_description(description):
     job_descriptions = [job.get('descrição', '') for job in jobs]
-    job_descriptions.append(description)
+    doc1 = nlp(description)
+    similarities = []
 
-    tfidf_vectorizer = TfidfVectorizer()
-    tfidf_matrix = tfidf_vectorizer.fit_transform(job_descriptions)
+    for job in job_descriptions:
+        doc2 = nlp(job)
+        similarities.append(doc1.similarity(doc2))
 
-    cosine_similarities = linear_kernel(tfidf_matrix[-1:], tfidf_matrix[:-1]).flatten()
-    most_similar_job_index = cosine_similarities.argmax()
+    most_similar_index = similarities.index(max(similarities))
 
-    if cosine_similarities[most_similar_job_index] > 0.1:
-        return most_similar_job_index
-
-    return None
+    return most_similar_index if max(similarities) > 0.1 else None
 
 if __name__ == '__main__':
     app.run(debug=True)
