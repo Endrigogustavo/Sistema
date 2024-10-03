@@ -1,19 +1,14 @@
 {
-  "functions": {
-    "app.py": {
-      "runtime": "python3.10.2"
-    }
-  },
-  "routes": [
-    {
-      "src": "/extract_table",
-      "methods": ["POST"],
-      "dest": "/app.py"
+    "version": 2,
+    "functions": {
+        "api/*.py": {
+            "runtime": "vercel-python@0.8.0"  // Verifique a versão mais recente disponível
+        }
     },
-    {
-      "src": "/(.*)",
-      "dest": "/app.py"
-    }
-  ],
-  "version": 2
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/index.py"
+        }
+    ]
 }
