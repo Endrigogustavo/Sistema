@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "daelink-projeto",
+  "private_key_id": "b9eef02b6f01f9ef0c80a67729feb303334965f9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDA7VbfgrT0Thme\nAx2o3KhqsvJcpHUGHhw04AYR2YOVBc8nH18pjLxkd4XO1kplW9FD7669iIXyx/at\n6DDr3dCsNJsPmqMTnhJTYk3Uy88NFXe4k4RD1E4Xx/MmB64tBSktKKO15j5N9/II\nMboJ3lqPTZxNTMMAEgJrx7kxevYGhF+cMOYjIH8/rjQHKh/aqWxiuYdvnrRZ9ytC\nSQYYvD37FMfTZZw5bejZOi8jcP7B2T909X8fUJa0w7srKipGZMZid+CrvwAjDD7o\nlhVt//HpCn3gw0m32rINAf8KquemqEoVe6OB8+IoedPCmy+aR7t4jrBCvph6niek\ncESStquFAgMBAAECggEAB6gjv4Enf16uI5hKEA6Z3Io3ljessU52nh6Z/xFb6Ikv\nfIUBONvuCiq4M8pLb5RiTMjxbXJCpq0K/EHv1xyZkIwR71+aw0eNwKNxJVXlZMaK\nVtf78tk1NDpqSwMZBY5j4Pfw72Iw7NU/VNXsZUHe5DsXTfYS8yjD0dU+Y1lW9FEw\n42c8tju46slo4C1ooNuuD0FE6Z3Asc7Jg7Lq3lF2R5tWJ/XfQw7JFJijDUTbuVvd\nzb+8+auK8lXGANqGN14Dwim6NPDVqar9MeEYfs2YJhip6LvSi8cYUqDtHIj0U1Te\nC/kICIdI7EP7A4r3obdt+BBUF+0qX6/aMroDNs7zQQKBgQD1xM5Hp7pXlKSl+Nvs\nvMh1/oqu+i1PxVUhP6CxQC2xgh59+7FhjnFxyQ6grOgahQREK5HUJaUulkJnaZX/\nXvnIiN16bmCpw3t4XhhLquxz6iTXES4bkJPT98Bfw0PtgzMtY6fD/3NIK7XSG99f\nEyCz6/at5I0o4TBQYi3FERIbkQKBgQDI9WRhHiYqLVFv+pe9xPjKAjgUtJDCa+/D\nGPULytfp994yrw1hD1+pnYjMYXsc6IXublfiWP26BQp/GWtQnGV3rljpRjj5tQgU\nHJ83HuWIdYQc+oWaEKy54+vrtW72kS5O6A0nspmntmb39EsaLhKvzh1bnPZA9gYD\n4t3RBNNOtQKBgQDH80k8JOrG7EkUOyZ6MZEJ5oBgIWwR9WLwPPr4mlVSkKFMMCS9\nUQ1c3I3JDUN8p/GzoJrxNXtxLpBx4AZIELY5f5hpTjnYhBEE+dDcZwAewkUcsH6J\nsJOEpZFel9fA+bf+WpCYNlFNSzqO6VxO1poJp5U3HrX1p1gOXgIMzXmk8QKBgG4e\nScsOAkvKWX3LC6tpbAsF/EUcTNa83r1Bx8WWeYoz0QZk9ifhjMIdGQElyZilsf5d\naLsXmLF+YaoT+8JIcTGL0BzD5iSvFqYuqPBDdfO4sZRPkzZBPOUACB85ZHyoQX/r\nmInQTHKiePoWW7EU3hiIEX5KHIasSc+HWZVX15KhAoGBAKpbStoaL79ufIkiD6s/\nxKHYibVyyE8P9LsFeF3dULAEi/AiRzswxFszcs3xppUQEJnon+K2RGKvNFuifYel\nU08P985BgT3MI6seY9sJ2yP+M9mFjmDp3Ox34jeF81RShcjsTsUN8Q+MeGFlaIdg\n6SgE2eWW1x9IcZhe81bXn7/0\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-knxeu@daelink-projeto.iam.gserviceaccount.com",
+  "client_id": "107538555969173002420",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-knxeu%40daelink-projeto.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
